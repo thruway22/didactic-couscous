@@ -19,6 +19,8 @@ with tab2:
     with placeholder.container():
         for step in range(ticker_count):
             display_input_widgets(step) 
+form2 = st.form('input_form2')
+form2.form_submit_button("Submit")
 form.form_submit_button("Submit")
 
 
