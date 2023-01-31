@@ -1,10 +1,21 @@
 import streamlit as st
 import pandas as pd
 
+def display_input_widgets(stride):
+    locals()['col%s0' % stride], locals()['col%s1' % stride], locals()['col%s2' % stride] = form.columns(3)
+    locals()['ticker%s' % stride] = locals()['col%s0' % stride].text_input('ticker%s' % stride, label_visibility='collapsed')
+    locals()['share%s' % stride] = locals()['col%s1' % stride].number_input('share%s' % stride, min_value=0, step=1, format='%d', label_visibility='collapsed')
+    locals()['target%s' % stride] = locals()['col%s2' % stride].number_input('target%s' % stride, min_value=0.0, step=0.1, format='%.1f', label_visibility='collapsed')
+    globals().update(locals()) 
+
 st.title('NextTrade')
 form = st.form('input_form')
 tab1, tab2 = form.tabs(['Upload CSV file', 'Manual input'])
 uploaded_file = tab1.file_uploader("Choose a file", type='CSV')
+with tab2:
+  ticker_count = st.number_input('Enter number', value=3)
+  for step in range(ticker_count):
+    display_input_widgets(step) 
 form.form_submit_button("Submit")
 
 
