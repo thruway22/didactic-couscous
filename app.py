@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 st.title('NextTrade')
-st.form('input_form')
+form = st.form('input_form')
 uploaded_file = form.file_uploader("Choose a file", type='CSV')
 form.form_submit_button("Submit")
 
