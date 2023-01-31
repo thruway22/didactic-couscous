@@ -14,9 +14,9 @@ tab1, tab2 = form.tabs(['Upload CSV file', 'Manual input'])
 with tab1:
     uploaded_file = st.file_uploader("Choose a file", type='CSV')
 with tab2:
-  ticker_count = st.number_input('Enter number', value=3)
-  for step in range(ticker_count):
-    display_input_widgets(step) 
+    ticker_count = st.number_input('Enter number', value=3)
+    for step in range(ticker_count):
+        display_input_widgets(step) 
 form.form_submit_button("Submit")
 
 
