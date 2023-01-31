@@ -3,7 +3,8 @@ import pandas as pd
 
 st.title('NextTrade')
 form = st.form('input_form')
-uploaded_file = form.file_uploader("Choose a file", type='CSV')
+tab1, tab2 = form.tabs(['Upload CSV file', 'Manual input'])
+uploaded_file = tab1.file_uploader("Choose a file", type='CSV')
 form.form_submit_button("Submit")
 
 
