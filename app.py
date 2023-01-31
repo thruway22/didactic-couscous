@@ -9,13 +9,12 @@ def display_input_widgets(stride):
     globals().update(locals()) 
 
 st.title('NextTrade')
-form = st.form('input_form')
-tab1, tab2 = form.tabs(['Upload CSV file', 'Manual input'])
-with tab1:
-    uploaded_file = st.file_uploader("Choose a file", type='CSV')
-with tab2:
+uploaded_file = st.file_uploader('Choose a file', type='CSV')
+
+with st.expander('or manually input'):
+    form = st.form('input_form')
     ticker_count = st.number_input('Enter number', value=3)
-submitted = form.form_submit_button("Submit")
+    submitted = form.form_submit_button("Submit")
 
 placeholder = st.empty()
 with placeholder.container():
