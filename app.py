@@ -15,12 +15,12 @@ with tab1:
     uploaded_file = st.file_uploader("Choose a file", type='CSV')
 with tab2:
     ticker_count = st.number_input('Enter number', value=3)
-    for step in range(ticker_count):
-            display_input_widgets(step) 
 submitted = form.form_submit_button("Submit")
 
 if submitted and uploaded_file is None:
     form2 = st.form('input_form2')
+    for step in range(ticker_count):
+            display_input_widgets(step) 
     form2.form_submit_button("Submit")
 
 
