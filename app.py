@@ -11,7 +11,8 @@ def display_input_widgets(stride):
 st.title('NextTrade')
 form = st.form('input_form')
 tab1, tab2 = form.tabs(['Upload CSV file', 'Manual input'])
-uploaded_file = tab1.file_uploader("Choose a file", type='CSV')
+with tab1:
+    uploaded_file = st.file_uploader("Choose a file", type='CSV')
 with tab2:
   ticker_count = st.number_input('Enter number', value=3)
   for step in range(ticker_count):
