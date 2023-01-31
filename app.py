@@ -13,7 +13,7 @@ uploaded_file = st.file_uploader('Choose a file', type='CSV')
 
 with st.expander('or manually input'):
     form = st.form('input_form')
-    ticker_count = st.number_input('Enter number', value=3)
+    ticker_count = form.number_input('Enter number', value=3)
     submitted = form.form_submit_button("Submit")
 
 #placeholder = st.empty()
