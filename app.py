@@ -13,7 +13,7 @@ st.title('NextTrade')
 uploaded_file = st.file_uploader('Choose a file', type='CSV')
 
 with st.expander('or manually input'):
-    csv_form = st.form('input_form')
+    csv_form = st.form('csv_form')
     csv_string = csv_form.text_area('csv_string', placeholder='VTI,14,65\nBND,5,15\nKSA,3,20', label_visibility='collapsed')
     csv_form_submitted = csv_form.form_submit_button("Submit")
     
@@ -21,7 +21,7 @@ if csv_form_submitted:
     df = pd.read_csv(StringIO('VTI,14,65\nBND,5,15\nKSA,3,20'), sep=",", header=None)
     #st.table(df)
     
-    ticker_form = st.form('input_form')
+    ticker_form = st.form('ticker_form')
     cola, colb, colc = ticker_form.columns(3)
     cola.write('Ticker')
     colb.write('Current Shares (x)')
