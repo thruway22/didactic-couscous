@@ -12,8 +12,9 @@ st.title('NextTrade')
 uploaded_file = st.file_uploader('Choose a file', type='CSV')
 
 with st.expander('or manually input'):
-    
-    txt = st.text_area('csv_manual', placeholder='VTI,14,65\nBND,5,15\nKSA,3,20', label_visibility='collapsed')
+    form = st.form('input_form')
+    txt = form.text_area('csv_manual', placeholder='VTI,14,65\nBND,5,15\nKSA,3,20', label_visibility='collapsed')
+    submitted = form.form_submit_button("Submit")
     
     #ticker_count = st.number_input('Enter number', value=0)
     #if ticker_count > 0:
