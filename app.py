@@ -13,13 +13,23 @@ st.title('NextTrade')
 uploaded_file = st.file_uploader('Choose a file', type='CSV')
 
 with st.expander('or manually input'):
-    form = st.form('input_form')
-    csv_string = form.text_area('csv_string', placeholder='VTI,14,65\nBND,5,15\nKSA,3,20', label_visibility='collapsed')
-    submitted = form.form_submit_button("Submit")
+    csv_form = st.form('input_form')
+    csv_string = csv_form.text_area('csv_string', placeholder='VTI,14,65\nBND,5,15\nKSA,3,20', label_visibility='collapsed')
+    csv_form_submitted = csv_form.form_submit_button("Submit")
     
-if submitted:
+if csv_form_submitted:
     df = pd.read_csv(StringIO('VTI,14,65\nBND,5,15\nKSA,3,20'), sep=",", header=None)
-    st.table(df)
+    #st.table(df)
+    
+    ticker_form = st.form('input_form')
+    cola, colb, colc = ticker_form.columns(3)
+    cola.write('Ticker')
+    colb.write('Current Shares (x)')
+    colc.write('Target Weight (%)')
+    for step in range(len(df)):
+        display_input_widgets(step)
+    ticker_form_submitted = ticker_form.form_submit_button("Submit")
+    
     
     #ticker_count = st.number_input('Enter number', value=0)
     #if ticker_count > 0:
