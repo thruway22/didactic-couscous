@@ -21,14 +21,14 @@ if csv_form_submitted:
     df = pd.read_csv(StringIO('VTI,14,65\nBND,5,15\nKSA,3,20'), sep=",", header=None)
     #st.table(df)
     
-    ticker_form = st.form('ticker_form')
+    form = st.form('ticker_form')
     cola, colb, colc = ticker_form.columns(3)
     cola.write('Ticker')
     colb.write('Current Shares (x)')
     colc.write('Target Weight (%)')
     for step in range(len(df)):
         display_input_widgets(step)
-    ticker_form_submitted = ticker_form.form_submit_button("Submit")
+    submitted = form.form_submit_button("Submit")
     
     
     #ticker_count = st.number_input('Enter number', value=0)
