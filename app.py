@@ -15,6 +15,10 @@ with st.expander('or manually input'):
     ticker_count = st.number_input('Enter number', value=0)
     if ticker_count > 0:
         form = st.form('input_form')
+        cola, colb, colc = form.columns(3)
+        cola.write('Ticker')
+        colb.write('Current Shares (x)')
+        colc.write('Target Weight (%)')
         for step in range(ticker_count):
             display_input_widgets(step)
         submitted = form.form_submit_button("Submit")
