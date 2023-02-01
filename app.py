@@ -17,8 +17,9 @@ with st.expander('or manually input'):
     csv_string = form.text_area('csv_string', placeholder='VTI,14,65\nBND,5,15\nKSA,3,20', label_visibility='collapsed')
     submitted = form.form_submit_button("Submit")
     
-df = pd.read_csv(StringIO('VTI,14,65\nBND,5,15\nKSA,3,20'), sep=",", header=None)
-st.write(df)
+if submitted:
+    df = pd.read_csv(StringIO('VTI,14,65\nBND,5,15\nKSA,3,20'), sep=",", header=None)
+    st.write(df)
     
     #ticker_count = st.number_input('Enter number', value=0)
     #if ticker_count > 0:
