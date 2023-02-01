@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from io import StringIO
 
 def display_input_widgets(stride):
     locals()['col%s0' % stride], locals()['col%s1' % stride], locals()['col%s2' % stride] = form.columns(3)
@@ -13,8 +14,12 @@ uploaded_file = st.file_uploader('Choose a file', type='CSV')
 
 with st.expander('or manually input'):
     form = st.form('input_form')
-    txt = form.text_area('csv_manual', placeholder='VTI,14,65\nBND,5,15\nKSA,3,20', label_visibility='collapsed')
+    csv_string = form.text_area('csv_string', placeholder='VTI,14,65\nBND,5,15\nKSA,3,20', label_visibility='collapsed')
     submitted = form.form_submit_button("Submit")
+    
+if submitted:
+    df = pd.read_csv(StringIO(csv_string), sep=",")
+    st.wrtie(df)
     
     #ticker_count = st.number_input('Enter number', value=0)
     #if ticker_count > 0:
