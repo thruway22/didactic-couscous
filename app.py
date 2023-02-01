@@ -19,7 +19,7 @@ with st.expander('or manually input'):
     
 if submitted:
     df = pd.read_csv(StringIO('VTI,14,65\nBND,5,15\nKSA,3,20'), sep=",", header=None)
-    st.write(df)
+    st.table(df)
     
     #ticker_count = st.number_input('Enter number', value=0)
     #if ticker_count > 0:
